@@ -13,5 +13,5 @@ python3 $PREFIX/opencv/platforms/apple/build_xcframework.py \
 --build_only_specified_archs \
 -o opencv2.xcframework
 
-mv $(pwd)/opencv2.xcframework/opencv2.xcframework $TARGET/opencv2.xcframework
+mv $(pwd)/opencv2.xcframework/opencv2.xcframework $TARGET/
 rm -rf $(pwd)/opencv2.xcframework

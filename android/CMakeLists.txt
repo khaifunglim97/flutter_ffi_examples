@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.4.1)
 
-set(OPENCV_BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/deps/opencv2/")
+set(OPENCV_BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/deps/opencv2")
 set(OPENCV_INCLUDE_DIR "${OPENCV_BASE_DIR}/include/")
 set(OPENCV_STATIC_LIB_DIR "${OPENCV_BASE_DIR}/${ANDROID_ABI}")
 set(OPENCV_3RDPARTY_STATIC_LIB_DIR "${OPENCV_BASE_DIR}/3rdparty/${ANDROID_ABI}")
@@ -94,13 +94,20 @@ set_target_properties(liblibopenjp2 PROPERTIES IMPORTED_LOCATION ${OPENCV_3RDPAR
 add_library(liblibprotobuf STATIC IMPORTED)
 set_target_properties(liblibprotobuf PROPERTIES IMPORTED_LOCATION ${OPENCV_3RDPARTY_STATIC_LIB_DIR}/liblibprotobuf.a)
 
+add_library(libsodium STATIC IMPORTED)
+set_target_properties(libsodium PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/deps/libsodium/include/
+    IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/deps/libsodium/${ANDROID_ABI}/libsodium.a
+)
+
 add_library( native_examples
 
         # Sets the library as a shared library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        ../ios/Classes/OpencvPixels.cpp
+        ../ios/Classes/NativeOpencv.cpp
+        ../ios/Classes/NativeLibsodium.cpp
         )
 
 target_link_libraries(
@@ -109,6 +116,8 @@ target_link_libraries(
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib}
+
+        libsodium
 
         # NOTE Add whatever OpenCV module you need here!
         # i.e. If you see things like "error: undefined reference to xxx", have a try here

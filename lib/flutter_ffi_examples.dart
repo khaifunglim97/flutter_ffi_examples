@@ -33,4 +33,10 @@ class FlutterFfiExamples {
 
   static late final opencvImgPixels = _opencvImgPixelsPtr
       .asFunction<int Function(Pointer<Uint8>, int)>();
+
+  static late final _libsodiumRandomPtr = nativeExampleLib.lookup<
+      NativeFunction<Uint32 Function()>>('libsodium_random');
+
+  static late final libsodiumRandom = _libsodiumRandomPtr
+      .asFunction<int Function()>();
 }

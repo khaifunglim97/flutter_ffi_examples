@@ -4,3 +4,6 @@
 [submodule "deps/opencv_contrib"]
 	path = deps/opencv_contrib
 	url = https://github.com/opencv/opencv_contrib.git
+[submodule "deps/libsodium"]
+	path = deps/libsodium
+	url = https://github.com/jedisct1/libsodium

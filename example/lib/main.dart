@@ -21,6 +21,7 @@ class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
   late Uint8List _preOpencvPixels;
   int _numPixels = 0;
+  int _randomNum = -1;
 
   @override
   void initState() {
@@ -40,6 +41,7 @@ class _MyAppState extends State<MyApp> {
       platformVersion = 'Failed to get platform version.';
     }
 
+    // OpenCV
     ByteData bytesData = await rootBundle.load('images/sample_photo.webp');
     _preOpencvPixels = bytesData.buffer.asUint8List(
         bytesData.offsetInBytes, bytesData.lengthInBytes);
@@ -49,6 +51,9 @@ class _MyAppState extends State<MyApp> {
         _preOpencvPtr, _preOpencvPixels.length);
     calloc.free(_preOpencvPtr);
 
+    // Libsodium
+    int randomNum = FlutterFfiExamples.libsodiumRandom();
+
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.
@@ -57,6 +62,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _platformVersion = platformVersion;
       _numPixels = numPixels;
+      _randomNum = randomNum;
     });
   }
 
@@ -72,6 +78,7 @@ class _MyAppState extends State<MyApp> {
             children: [
               Text('Running on: $_platformVersion\n'),
               Text('Number of pixels for sample image: $_numPixels\n'),
+              Text('Random number generated: $_randomNum\n'),
             ],
           ),
         ),
