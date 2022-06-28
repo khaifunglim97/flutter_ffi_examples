@@ -27,3 +27,10 @@
 .dart_tool/
 .packages
 build/
+
+# Project related
+android/.cxx/
+android/deps/
+deps/*.sh
+deps/install-sh
+ios/*.xcframework
