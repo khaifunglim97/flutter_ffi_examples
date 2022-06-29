@@ -22,6 +22,7 @@ class _MyAppState extends State<MyApp> {
   late Uint8List _preOpencvPixels;
   int _numPixels = 0;
   int _randomNum = -1;
+  int _cmockaTest = -1;
 
   @override
   void initState() {
@@ -54,6 +55,9 @@ class _MyAppState extends State<MyApp> {
     // Libsodium
     int randomNum = FlutterFfiExamples.libsodiumRandom();
 
+    // Cmocka
+    int cmockaTest = FlutterFfiExamples.cmockaNullTest();
+
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.
@@ -63,6 +67,7 @@ class _MyAppState extends State<MyApp> {
       _platformVersion = platformVersion;
       _numPixels = numPixels;
       _randomNum = randomNum;
+      _cmockaTest = cmockaTest;
     });
   }
 
@@ -79,6 +84,7 @@ class _MyAppState extends State<MyApp> {
               Text('Running on: $_platformVersion\n'),
               Text('Number of pixels for sample image: $_numPixels\n'),
               Text('Random number generated: $_randomNum\n'),
+              Text('Cmocka test result: $_cmockaTest'),
             ],
           ),
         ),

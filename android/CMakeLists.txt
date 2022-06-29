@@ -100,6 +100,12 @@ set_target_properties(libsodium PROPERTIES
     IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/deps/libsodium/${ANDROID_ABI}/libsodium.a
 )
 
+add_library(libcmocka STATIC IMPORTED)
+set_target_properties(libcmocka PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/deps/libcmocka/include/
+    IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/deps/libcmocka/${ANDROID_ABI}/libcmocka-static.a
+)
+
 add_library( native_examples
 
         # Sets the library as a shared library.
@@ -108,6 +114,7 @@ add_library( native_examples
         # Provides a relative path to your source file(s).
         ../ios/Classes/NativeOpencv.cpp
         ../ios/Classes/NativeLibsodium.cpp
+        ../ios/Classes/NativeCmocka.c
         )
 
 target_link_libraries(
@@ -118,6 +125,7 @@ target_link_libraries(
         ${log-lib}
 
         libsodium
+        libcmocka
 
         # NOTE Add whatever OpenCV module you need here!
         # i.e. If you see things like "error: undefined reference to xxx", have a try here

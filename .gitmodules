@@ -7,3 +7,6 @@
 [submodule "deps/libsodium"]
 	path = deps/libsodium
 	url = https://github.com/jedisct1/libsodium
+[submodule "deps/cmocka"]
+	path = deps/cmocka
+	url = https://git.cryptomilk.org/projects/cmocka.git

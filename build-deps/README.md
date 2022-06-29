@@ -6,8 +6,8 @@ Run respective script files for libraries and platforms.
 > For Android build, ensure Ninja is installed, with OpenJDK 8
 > and JAVA_HOME is set.
 
-> Build is only tested on NDK18 and CMake 3.10.2. Make sure 
-> ANDROID_NDK_HOME is pointed to NDK18 with CMake 3.10.2 to avoid compile errors.
+> Build is only tested on NDK18 and Android CMake 3.10.2. Make sure 
+> ANDROID_NDK_HOME is pointed to NDK18 to avoid compile errors.
 > 
 
 ####Libsodium
@@ -18,3 +18,10 @@ Run respective script files for libraries and platforms.
 
 > Build is only tested on NDK23. Make sure ANDROID_NDK_HOME is
 > pointed to NDK23 to avoid compile errors.
+
+####Cmocka
+> Ensure Cmocka source code belongs to cmocka-1.1.5 from git source
+> to avoid compile errors.
+
+> Build is only tested on NDK23 and CMake 3.22.3. Make sure 
+> ANDROID_NDK_HOME is pointed to NDK23 to avoid compile errors.

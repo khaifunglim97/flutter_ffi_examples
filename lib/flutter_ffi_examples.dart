@@ -39,4 +39,10 @@ class FlutterFfiExamples {
 
   static late final libsodiumRandom = _libsodiumRandomPtr
       .asFunction<int Function()>();
+
+  static late final _cmockaNullTest = nativeExampleLib.lookup<
+      NativeFunction<Int Function()>>('cmocka_null_test');
+
+  static late final cmockaNullTest = _cmockaNullTest
+      .asFunction<int Function()>();
 }
