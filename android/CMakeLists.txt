@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_CXX_STANDARD 17)
 
 set(OPENCV_BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/deps/opencv2")
 set(OPENCV_INCLUDE_DIR "${OPENCV_BASE_DIR}/include/")
@@ -106,6 +107,8 @@ set_target_properties(libcmocka PROPERTIES
     IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/deps/libcmocka/${ANDROID_ABI}/libcmocka-static.a
 )
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../ios/Eigen/)
+
 add_library( native_examples
 
         # Sets the library as a shared library.
@@ -115,6 +118,7 @@ add_library( native_examples
         ../ios/Classes/NativeOpencv.cpp
         ../ios/Classes/NativeLibsodium.cpp
         ../ios/Classes/NativeCmocka.c
+        ../ios/Classes/NativeEigen.cpp
         )
 
 target_link_libraries(

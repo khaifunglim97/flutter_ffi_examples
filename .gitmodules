@@ -10,3 +10,6 @@
 [submodule "deps/cmocka"]
 	path = deps/cmocka
 	url = https://git.cryptomilk.org/projects/cmocka.git
+[submodule "deps/eigen"]
+	path = deps/eigen
+	url = https://gitlab.com/libeigen/eigen.git

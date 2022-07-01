@@ -23,6 +23,7 @@ class _MyAppState extends State<MyApp> {
   int _numPixels = 0;
   int _randomNum = -1;
   int _cmockaTest = -1;
+  String _eigenMatInfo = "NULL";
 
   @override
   void initState() {
@@ -58,6 +59,10 @@ class _MyAppState extends State<MyApp> {
     // Cmocka
     int cmockaTest = FlutterFfiExamples.cmockaNullTest();
 
+    // Eigen
+    String eigenMatInfo =
+      FlutterFfiExamples.eigenMatrix().toDartString();
+
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.
@@ -68,6 +73,7 @@ class _MyAppState extends State<MyApp> {
       _numPixels = numPixels;
       _randomNum = randomNum;
       _cmockaTest = cmockaTest;
+      _eigenMatInfo = eigenMatInfo;
     });
   }
 
@@ -84,7 +90,8 @@ class _MyAppState extends State<MyApp> {
               Text('Running on: $_platformVersion\n'),
               Text('Number of pixels for sample image: $_numPixels\n'),
               Text('Random number generated: $_randomNum\n'),
-              Text('Cmocka test result: $_cmockaTest'),
+              Text('Cmocka test result: $_cmockaTest\n'),
+              Text('Eigen matrix: $_eigenMatInfo\n'),
             ],
           ),
         ),

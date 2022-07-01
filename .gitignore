@@ -34,3 +34,4 @@ android/deps/
 deps/*.sh
 deps/install-sh
 ios/*.xcframework
+ios/Eigen

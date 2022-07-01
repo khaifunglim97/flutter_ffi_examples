@@ -45,4 +45,10 @@ class FlutterFfiExamples {
 
   static late final cmockaNullTest = _cmockaNullTest
       .asFunction<int Function()>();
+
+  static late final _eigenMatrix = nativeExampleLib.lookup<
+      NativeFunction<Pointer<Utf8> Function()>>('eigen_matrix');
+
+  static late final eigenMatrix = _eigenMatrix
+      .asFunction<Pointer<Utf8> Function()>();
 }
